@@ -2,7 +2,7 @@ import "tfplan"
 
 mandatory_tags = [
   "environment",
-  "managedby"
+  "managedby",
 ]
 
 getTags = func(group) {
