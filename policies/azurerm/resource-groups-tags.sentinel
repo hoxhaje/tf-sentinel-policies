@@ -1,4 +1,4 @@
-import "tfplan/v2" as tfplan
+import "tfplan"
 
 mandatory_tags = [
   "environment",
