@@ -1,0 +1,27 @@
+import "tfplan/v2" as tfplan
+
+mandatory_tags = [
+  "environment",
+  "managedby"
+]
+
+getTags = func(group) {
+  tags = keys(group.applied.tags)
+
+  for mandatory_tags as t {
+    if t not in tags {
+      print("Missing Tag:", t)
+      return false
+    }
+  }
+
+  return true
+}
+
+main = rule {
+  all tfplan.resources.azurerm_resource_group as _, groups {
+    all groups as _, group {
+      getTags(group)
+    }
+  }
+}
